@@ -29,7 +29,7 @@ def calidad_alcohol_rojo():
     alcohol_calidad = df[['alcohol','quality']]
 
     # Media de vinos en funcion de su calidad dependiendo del alcohol
-    calidad_grouped = alcohol_calidad.groupby('alcohol')['quality'].mean().asty
+    calidad_grouped = alcohol_calidad.groupby('alcohol')['quality'].mean()
     # print(calidad_grouped) # DEBUG
 
     # Variables para graficacion e interpolacion
@@ -74,7 +74,7 @@ def calidad_alcohol_rojo():
     print("R^2 Cubica:", r2_cubic)
 
     resultados_interp = pd.DataFrame({
-        'Alcohol': np.round(x_new.round(), 2),
+        'Alcohol': np.round(x_new, 2),
         'Calidad (Lineal)': y_linear,
         'Calidad (Cuadratica)': y_quadratic,
         'Calidad (Cubica)': y_cubic
@@ -173,7 +173,7 @@ def calidad_alcohol_blanco():
 
     # DataFrame para guardar resultados de las interpolaciones
     resultados_interp = pd.DataFrame({
-        'Alcohol': np.round(x_new.round(), 2),
+        'Alcohol': np.round(x_new, 2),
         'Calidad (Lineal)': y_linear,
         'Calidad (Cuadratica)': y_quadratic,
         'Calidad (Cubica)': y_cubic
