@@ -105,7 +105,7 @@ def colesterol_Enfermedad():
     })
 
     resultados_originales = pd.DataFrame({
-        'Edad': x,
+        'Colesterol': x,
         'Diagnosticos Originales': y,
     })
     resultados_originales.to_csv('Resultados/Enfermedad-Colesterol.csv', index=False)

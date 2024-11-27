@@ -15,10 +15,10 @@ from calidad_Alcohol import calidad_alcohol_rojo, calidad_alcohol_blanco
 
 def main():
     # Descomentar la funcion a utilizar:
-    # calidad_pH_rojo()
-    # calidad_pH_blanco()
-    # calidad_alcohol_blanco()
-    # calidad_alcohol_rojo()
+    calidad_pH_rojo()
+    calidad_pH_blanco()
+    calidad_alcohol_blanco()
+    calidad_alcohol_rojo()
     edad_Enfermedad()
     colesterol_Enfermedad()
     presion_Enfermedad()

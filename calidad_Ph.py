@@ -75,9 +75,17 @@ def calidad_pH_rojo():
 
     # DataFrame para guardar resultados de las interpolaciones
     resultados_interp = pd.DataFrame({
-        'pH': x,
-        'Calidad': y
+        'pH': np.round(x_new.round(), 2),
+        'Calidad (Lineal)': y_linear,
+        'Calidad (Cuadratica)': y_quadratic,
+        'Calidad (Cubica)': y_cubic
     })
+
+    resultados_originales = pd.DataFrame({
+        'pH': x,
+        'Calidad': y,
+    })
+    resultados_originales.to_csv('Resultados/pH-Calidad-Rojo.csv', index=False)
 
     # Graficacion
     plt.figure(figsize=(12, 8))
@@ -164,11 +172,20 @@ def calidad_pH_blanco():
     print("R^2 Cuadratica:", r2_quadratic)
     print("R^2 Cubica:", r2_cubic)
 
-    # DataFrame para guardar resultados de las interpolaciones
+    # DataFrame para guardar resultados
+
     resultados_interp = pd.DataFrame({
-        'pH': x,
-        'Calidad': y
+        'pH': np.round(x_new.round(),2),
+        'Calidad (Lineal)': y_linear,
+        'Calidad (Cuadratica)': y_quadratic,
+        'Calidad (Cubica)': y_cubic
     })
+
+    resultados_originales = pd.DataFrame({
+        'pH': x,
+        'Calidad': y,
+    })
+    resultados_originales.to_csv('Resultados/pH-Calidad-Blanco.csv', index=False)
 
     # Graficacion
     plt.figure(figsize=(12, 8))

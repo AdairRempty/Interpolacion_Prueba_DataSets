@@ -73,11 +73,18 @@ def calidad_alcohol_rojo():
     print("R^2 Cuadratica:", r2_quadratic)
     print("R^2 Cubica:", r2_cubic)
 
-    # DataFrame para guardar resultados de las interpolaciones
     resultados_interp = pd.DataFrame({
-        'Alcohol': x,
-        'Calidad': y
+        'Alcohol': np.round(x_new.round(), 2),
+        'Calidad (Lineal)': y_linear,
+        'Calidad (Cuadratica)': y_quadratic,
+        'Calidad (Cubica)': y_cubic
     })
+
+    resultados_originales = pd.DataFrame({
+        'Alcohol': x,
+        'Calidad': y,
+    })
+    resultados_originales.to_csv('Resultados/Alcohol-Calidad-Rojo.csv', index=False)
 
     # Graficacion
     plt.figure(figsize=(12, 8))
@@ -166,9 +173,17 @@ def calidad_alcohol_blanco():
 
     # DataFrame para guardar resultados de las interpolaciones
     resultados_interp = pd.DataFrame({
-        'Alcohol': x,
-        'Calidad': y
+        'Alcohol': np.round(x_new.round(), 2),
+        'Calidad (Lineal)': y_linear,
+        'Calidad (Cuadratica)': y_quadratic,
+        'Calidad (Cubica)': y_cubic
     })
+
+    resultados_originales = pd.DataFrame({
+        'Alcohol': x,
+        'Calidad': y,
+    })
+    resultados_originales.to_csv('Resultados/Alcohol-Calidad-Blanco.csv', index=False)
 
     # Graficacion
     plt.figure(figsize=(12, 8))
