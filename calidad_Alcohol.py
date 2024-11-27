@@ -63,9 +63,17 @@ def calidad_alcohol_rojo():
     r2_linear = r2_score(y, y_linear[:len(y)])
     r2_quadratic = r2_score(y, y_quadratic[:len(y)])
     r2_cubic = r2_score(y, y_cubic[:len(y)])
+    # Calcular Error Estándar de Estimación (SEE)
+    see_linear = error_estandar_estimacion(y, y_linear[:len(y)])
+    see_quadratic = error_estandar_estimacion(y, y_quadratic[:len(y)])
+    see_cubic = error_estandar_estimacion(y, y_cubic[:len(y)])
 
+    # Error Estándar de Estimación (SEE)
+    print("\nSEE Lineal:", see_linear)
+    print("SEE Cuadrática:", see_quadratic)
+    print("SEE Cúbica:", see_cubic)
     # Error Cuadratico
-    print(f"MSE Lineal:", mse_linear)
+    print(f"\nMSE Lineal:", mse_linear)
     print(f"MSE Cuadratica:", mse_quadratic)
     print(f"MSE Cubica:", mse_cubic)
     # Coeficiente de determinacion
@@ -161,9 +169,17 @@ def calidad_alcohol_blanco():
     r2_linear = r2_score(y, y_linear[:len(y)])
     r2_quadratic = r2_score(y, y_quadratic[:len(y)])
     r2_cubic = r2_score(y, y_cubic[:len(y)])
+    # Calcular Error Estándar de Estimación (SEE)
+    see_linear = error_estandar_estimacion(y, y_linear[:len(y)])
+    see_quadratic = error_estandar_estimacion(y, y_quadratic[:len(y)])
+    see_cubic = error_estandar_estimacion(y, y_cubic[:len(y)])
 
+    # Error Estándar de Estimación (SEE)
+    print("\nSEE Lineal:", see_linear)
+    print("SEE Cuadrática:", see_quadratic)
+    print("SEE Cúbica:", see_cubic)
     # Error Cuadratico
-    print(f"MSE Lineal:", mse_linear)
+    print(f"\nMSE Lineal:", mse_linear)
     print(f"MSE Cuadratica:", mse_quadratic)
     print(f"MSE Cubica:", mse_cubic)
     # Coeficiente de determinacion
@@ -214,3 +230,10 @@ def calidad_alcohol_blanco():
     print('\n', resultados_interp)
     resultados_interp.to_csv('Resultados/alcohol-Calidad-Blanco_Interpolacion.csv', index=False)
     return()
+
+def error_estandar_estimacion(y_real, y_predicho):
+    # Calcular el error estándar de estimación (SEE)
+    n = len(y_real)
+    residuals = y_real - y_predicho
+    see = np.sqrt(np.sum(residuals**2) / (n - 2))  # Dividido por n-2 por el número de parámetros
+    return see

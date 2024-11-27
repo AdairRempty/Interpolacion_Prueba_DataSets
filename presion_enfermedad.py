@@ -85,8 +85,17 @@ def presion_Enfermedad():
     r2_quadratic = r2_score(y_real, y_quadratic)
     r2_cubic = r2_score(y_real, y_cubic)
 
+    # Calcular Error Estándar de Estimación (SEE)
+    see_linear = error_estandar_estimacion(y_real, y_linear)
+    see_quadratic = error_estandar_estimacion(y_real, y_quadratic)
+    see_cubic = error_estandar_estimacion(y_real, y_cubic)
+
+    # Error Estándar de Estimación (SEE)
+    print("\nSEE Lineal:", see_linear)
+    print("SEE Cuadrática:", see_quadratic)
+    print("SEE Cúbica:", see_cubic)
     # Error Cuadratico
-    print(f"MSE Lineal:", mse_linear)
+    print(f"\nMSE Lineal:", mse_linear)
     print(f"MSE Cuadratica:", mse_quadratic)
     print(f"MSE Cubica:", mse_cubic)
     # Coeficiente de determinacion
@@ -140,3 +149,10 @@ def presion_Enfermedad():
     print('\n',resultados_interp)
     resultados_interp.to_csv('Resultados/Enfermedad-Presion_Interpolacion.csv', index=False)
     return()
+
+def error_estandar_estimacion(y_real, y_predicho):
+    # Calcular el error estándar de estimación (SEE)
+    n = len(y_real)
+    residuals = y_real - y_predicho
+    see = np.sqrt(np.sum(residuals**2) / (n - 2))  # Dividido por n-2 por el número de parámetros
+    return see
